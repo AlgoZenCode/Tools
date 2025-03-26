@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools Hub</title>
+    <style>
+        :root {
+            --deep-blue: #1B4965;
+            --dark-blue: #2C3E50;
+            --vibrant-orange: #FF6F3C;
+            --warm-yellow: #FFD166;
+            --fresh-green: #4CAF50;
+            --soft-white: #F8F9FA;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--deep-blue), var(--dark-blue));
+            color: var(--soft-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--vibrant-orange), transparent);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--warm-yellow), var(--vibrant-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--vibrant-orange);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--warm-yellow);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--warm-yellow), transparent 70%);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--fresh-green), transparent 70%);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--vibrant-orange), var(--warm-yellow));
+            color: var(--dark-blue);
+            box-shadow: 0 4px 15px rgba(255, 111, 60, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 111, 60, 0.6);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--vibrant-orange), var(--fresh-green));
+            border-radius: 3px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, var(--deep-blue), var(--vibrant-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .tool-card h3 {
+            color: var(--warm-yellow);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--vibrant-orange), transparent);
+        }
+
+        footer p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Tools Hub</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>All-in-One Tools Platform</h2>
+                <p>Access a variety of powerful tools in one place with our modern and intuitive interface.</p>
+                <button class="btn btn-primary" onclick="showAlert()">Get Started</button>
+            </div>
+        </section>
+
+        <section class="tools-section">
+            <h2 class="section-title">Featured Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🔧</div>
+                    <h3>Code Converter</h3>
+                    <p>Convert between programming languages with ease and precision.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Data Visualizer</h3>
+                    <p>Create stunning visualizations from your raw data in seconds.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <h3>Security Analyzer</h3>
+                    <p>Check your applications for potential security vulnerabilities.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⚡</div>
+                    <h3>Performance Booster</h3>
+                    <p>Optimize your code and applications for maximum speed.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Tools Hub. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function showAlert() {
+            alert("Welcome to Tools Hub! Get ready to explore our amazing collection of tools.");
+        }
+    </script>
+</body>
+</html>

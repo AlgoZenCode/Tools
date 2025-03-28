@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools Hub</title>
+    <title>Image Tools Hub - Free Online Image Editing & Optimization Tools</title>
+    <meta name="description" content="Free online image tools for designers and developers. Compress, convert, resize, and edit images with our powerful suite of tools.">
+    <meta name="keywords" content="image tools, online image editor, photo compressor, image converter, resize image, crop image, watermark tool">
+    <meta name="author" content="Image Tools Hub">
+    
     <style>
         :root {
             --deep-blue: #1B4965;
@@ -15,7 +19,6 @@
             --card-bg: rgba(255, 255, 255, 0.1);
         }
         
-        /* General Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -31,7 +34,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -95,48 +97,10 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--warm-yellow), transparent 70%);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--fresh-green), transparent 70%);
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .hero-content {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .hero h2 {
@@ -176,9 +140,8 @@
             box-shadow: 0 6px 20px rgba(255, 111, 60, 0.6);
         }
 
-        /* Tools Section */
         .tools-section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .section-title {
@@ -187,8 +150,6 @@
             font-size: 2rem;
             position: relative;
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .section-title::after {
@@ -210,7 +171,6 @@
 
         .tool-card {
             background: var(--card-bg);
-            backdrop-filter: blur(5px);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
@@ -242,7 +202,6 @@
             font-size: 1.4rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 30px 0;
@@ -265,7 +224,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -279,11 +237,11 @@
             }
             
             .hero {
-                padding: 50px 20px;
+                padding: 40px 20px;
             }
             
-            .hero-content {
-                padding: 30px 20px;
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -291,12 +249,11 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">Tools Hub</div>
+            <div class="logo">Image Tools Hub</div>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">All Tools</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -304,48 +261,67 @@
         </header>
 
         <section class="hero">
-            <div class="hero-content">
-                <h2>All-in-One Tools Platform</h2>
-                <p>Access a variety of powerful tools in one place with our modern and intuitive interface.</p>
-                <button class="btn btn-primary" onclick="showAlert()">Get Started</button>
-            </div>
+            <h2>Powerful Image Editing Tools</h2>
+            <p>Free online tools to optimize, convert, and enhance your images</p>
         </section>
 
         <section class="tools-section">
-            <h2 class="section-title">Featured Tools</h2>
+            <h2 class="section-title">Image Tools</h2>
             <div class="tools-grid">
                 <div class="tool-card">
-                    <div class="tool-icon">🔧</div>
-                    <h3>Code Converter</h3>
-                    <p>Convert between programming languages with ease and precision.</p>
+             <div class="tool-icon">🖼️</div>
+              <h3>Image Compressor</h3>
+             <p>Reduce image file size without losing quality</p>
+         <a href="https://img-/image-compressor" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
                 </div>
                 <div class="tool-card">
-                    <div class="tool-icon">📊</div>
-                    <h3>Data Visualizer</h3>
-                    <p>Create stunning visualizations from your raw data in seconds.</p>
+                    <div class="tool-icon">🔄</div>
+                    <h3>Image Converter</h3>
+                    <p>Convert between JPG, PNG, WebP and more</p>
+                    <a href="/image-converter" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
                 </div>
                 <div class="tool-card">
-                    <div class="tool-icon">🔐</div>
-                    <h3>Security Analyzer</h3>
-                    <p>Check your applications for potential security vulnerabilities.</p>
+                    <div class="tool-icon">📏</div>
+                    <h3>Image Resizer</h3>
+                    <p>Resize images to any dimension</p>
+                    <a href="/image-resizer" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
                 </div>
                 <div class="tool-card">
-                    <div class="tool-icon">⚡</div>
-                    <h3>Performance Booster</h3>
-                    <p>Optimize your code and applications for maximum speed.</p>
+                    <div class="tool-icon">✂️</div>
+                    <h3>Image Cropper</h3>
+                    <p>Crop images to perfect dimensions</p>
+                    <a href="/image-cropper" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💧</div>
+                    <h3>Watermark Tool</h3>
+                    <p>Add watermarks to protect your images</p>
+                    <a href="/watermark-tool" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🌈</div>
+                    <h3>Image Filters</h3>
+                    <p>Apply beautiful filters to your photos</p>
+                    <a href="/image-filters" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🖌️</div>
+                    <h3>Background Remover</h3>
+                    <p>Remove backgrounds from images automatically</p>
+                    <a href="/background-remover" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <h3>Image Collage Maker</h3>
+                    <p>Create beautiful photo collages</p>
+                    <a href="/collage-maker" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Use Tool</a>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 Tools Hub. All rights reserved.</p>
+            <p>&copy; 2023 Image Tools Hub. All rights reserved.</p>
         </footer>
     </div>
-
-    <script>
-        function showAlert() {
-            alert("Welcome to Tools Hub! Get ready to explore our amazing collection of tools.");
-        }
-    </script>
 </body>
-</html>
+    </html>

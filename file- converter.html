@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill Converter | Convert 200+ File Formats Online</title>
+    <meta name="description" content="Free online Fill Converter for 200+ formats including PDF, MP4, MP3, DOCX, JPG. Fast, secure conversion with drag & drop functionality.">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
+    <style>
+        /* ALL ORIGINAL STYLES REMAIN UNCHANGED */
+        :root {
+            --bg-dark: #002B55;
+            --panel-dark: #003F77;
+            --accent-orange: #FF8800;
+            --accent-gold: #FFD166;
+            --accent-blue: #007BFF;
+            --text-light: #FFFFFF;
+            --glass-bg: rgba(0, 63, 119, 0.25);
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(135deg, var(--bg-dark) 0%, #00172D 100%);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+        
+        .converter-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        h1 {
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        
+        .file-input-container {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .file-input-container.drag-over {
+            border-color: var(--accent-blue);
+            background: rgba(0, 123, 255, 0.1);
+        }
+        
+        .file-input-container i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .file-input-label {
+            display: block;
+            cursor: pointer;
+        }
+        
+        #file {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .format-option {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+        }
+        
+        .format-option input {
+            margin-right: 0.8rem;
+            accent-color: var(--accent-orange);
+        }
+        
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--accent-orange), #FF6B00);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .download-btn-convert {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--accent-blue), #0062CC);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            display: none; /* Initially hidden */
+        }
+        
+        #loading {
+            display: none;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .success-message {
+            display: none;
+            background: rgba(0, 63, 119, 0.5);
+            border-left: 4px solid var(--accent-orange);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        
+        .ad-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .format-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fill Converter</h1>
+        
+        <div class="ad-container">
+            <!-- AdSense Unit 1 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID_1"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="converter-box">
+            <div class="success-message" id="success-message">
+                <p>File <strong id="original-file"></strong> successfully converted to <strong id="converted-file"></strong></p>
+            </div>
+            
+            <form id="converter-form">
+                <div class="form-group">
+                    <label for="file">Select Your File:</label>
+                    <div class="file-input-container" id="file-drop-area">
+                        <i class="fas fa-file-upload"></i>
+                        <label class="file-input-label">
+                            Drag & drop files here or click to browse<br>
+                            <small>Supports 200+ file formats</small>
+                        </label>
+                        <input type="file" id="file" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">File Type:</label>
+                    <select id="category" required>
+                        <option value="">-- Select file type --</option>
+                        <option value="archive">Archive</option>
+                        <option value="audio">Audio</option>
+                        <option value="cad">CAD</option>
+                        <option value="document">Document</option>
+                        <option value="ebook">Ebook</option>
+                        <option value="font">Font</option>
+                        <option value="image">Image</option>
+                        <option value="other">Other</option>
+                        <option value="presentation">Presentation</option>
+                        <option value="spreadsheet">Spreadsheet</option>
+                        <option value="vector">Vector</option>
+                        <option value="video">Video</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Convert To:</label>
+                    <div id="format-grid-container">
+                        <p style="text-align: center; opacity: 0.7;">Please select file type first</p>
+                    </div>
+                </div>
+                
+                <button type="submit">Convert File</button>
+                <button type="button" class="download-btn-convert" id="download-btn-convert">Download Converted File</button>
+            </form>
+        </div>
+        
+        <div id="loading">
+            <p>Converting your file...</p>
+        </div>
+        
+        <div class="ad-container">
+            <!-- AdSense Unit 2 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID_2"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2025 Fill Converter. All Rights Reserved.
+    </footer>
+
+    <script>
+        // ALL ORIGINAL JAVASCRIPT REMAINS UNCHANGED
+        const formatMap = {
+            "archive": ["7z", "ace", "alz", "apk", "ar", "arc", "arj", "bz", "bz2", "cab", "cpio", "deb", "dmg", "gz", "img", "iso", "jar", "lha", "lzh", "lz", "lzma", "msi", "nsis", "rar", "rpm", "tar", "tbz", "tbz2", "tgz", "txz", "xz", "z", "zip", "zipx"],
+            "audio": ["3ga", "aac", "ac3", "aiff", "alaw", "amr", "ape", "au", "caf", "dts", "flac", "gsm", "m4a", "m4b", "m4r", "mid", "midi", "mp3", "oga", "ogg", "opus", "ra", "ram", "shn", "spx", "tta", "voc", "wav", "wma", "wv", "xm"],
+            "cad": ["3dm", "3ds", "dae", "dgn", "dwg", "dxf", "fbx", "ifc", "iges", "igs", "obj", "skp", "stl", "stp", "step", "vrml", "wrl"],
+            "document": ["abw", "doc", "docm", "docx", "dot", "dotx", "fb2", "htm", "html", "lwp", "md", "odt", "pages", "pdf", "rst", "rtf", "sdw", "tex", "txt", "wpd", "wps", "xml"],
+            "ebook": ["azw", "azw3", "cbr", "cbz", "chm", "epub", "fb2", "lrf", "mobi", "pdb", "pdf", "snb", "tcr"],
+            "font": ["afm", "bdf", "eot", "fnt", "otf", "pfb", "pfm", "psf", "ttf", "woff", "woff2"],
+            "image": ["avif", "bmp", "cgm", "cin", "dcm", "dds", "dib", "djvu", "dng", "emf", "eps", "exr", "fax", "fits", "gif", "hdr", "heic", "heif", "ico", "j2k", "jng", "jp2", "jpc", "jpeg", "jpg", "jxr", "miff", "mng", "mpo", "orf", "pbm", "pcd", "pcx", "pfm", "pgm", "pic", "png", "pnm", "ppm", "psb", "psd", "psp", "ptif", "rad", "raf", "raw", "rle", "sct", "sgi", "sr2", "svg", "svgz", "tga", "tiff", "tim", "vtf", "wbmp", "webp", "wmf", "xbm", "xcf", "xpm", "xwd"],
+            "other": ["bin", "cue", "dat", "dsk", "iso", "mds", "mdf", "nrg", "pkg", "toast", "uif"],
+            "presentation": ["key", "odp", "otp", "pdb", "ppt", "pptm", "pptx", "prz", "sda", "sdd", "shf", "sti", "sxi", "uop"],
+            "spreadsheet": ["csv", "dbf", "dif", "fods", "ods", "ots", "slk", "sxc", "xls", "xlsb", "xlsm", "xlsx", "xlt", "xltx"],
+            "vector": ["ai", "cdr", "cgm", "dxf", "emf", "eps", "fig", "sk1", "svg", "wmf", "xcf"],
+            "video": ["3g2", "3gp", "asf", "avi", "bik", "flv", "m2ts", "m4v", "mkv", "mov", "mp4", "mpeg", "mpg", "mts", "mxf", "ogv", "rm", "rmvb", "swf", "ts", "vob", "webm", "wmv"]
+        };
+
+        // Drag and drop functionality (unchanged)
+        const fileDropArea = document.getElementById('file-drop-area');
+        const fileInput = document.getElementById('file');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            fileDropArea.classList.add('drag-over');
+        }
+        
+        function unhighlight() {
+            fileDropArea.classList.remove('drag-over');
+        }
+        
+        fileDropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            fileInput.files = dt.files;
+        }
+
+        document.getElementById('category').addEventListener('change', function() {
+            const category = this.value;
+            const container = document.getElementById('format-grid-container');
+            
+            container.innerHTML = '';
+            
+            if (category && formatMap[category]) {
+                const grid = document.createElement('div');
+                grid.className = 'format-grid';
+                
+                formatMap[category].forEach(format => {
+                    const option = document.createElement('div');
+                    option.className = 'format-option';
+                    
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = 'target_format';
+                    radio.id = `format-${format}`;
+                    radio.value = format;
+                    radio.required = true;
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `format-${format}`;
+                    label.textContent = format.toUpperCase();
+                    
+                    option.appendChild(radio);
+                    option.appendChild(label);
+                    grid.appendChild(option);
+                });
+                
+                container.appendChild(grid);
+            } else {
+                container.innerHTML = '<p style="text-align: center; opacity: 0.7;">Please select file type first</p>';
+            }
+        });
+
+        document.getElementById('converter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('file');
+            const categorySelect = document.getElementById('category');
+            const targetFormat = document.querySelector('input[name="target_format"]:checked');
+            
+            if (!fileInput.files.length) {
+                alert('Please select a file first!');
+                return;
+            }
+            
+            if (!categorySelect.value) {
+                alert('Please select file type!');
+                return;
+            }
+            
+            if (!targetFormat) {
+                alert('Please select target format!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const filename = file.name;
+            const format = targetFormat.value;
+            
+            document.getElementById('loading').style.display = 'block';
+            
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('original-file').textContent = filename;
+                document.getElementById('converted-file').textContent = `${filename.split('.')[0]}.${format}`;
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('download-btn-convert').style.display = 'block';
+                document.getElementById('download-btn-convert').textContent = `Download ${filename.split('.')[0]}.${format}`;
+            }, 2000);
+        });
+
+        // Added download button functionality
+        document.getElementById('download-btn-convert').addEventListener('click', function() {
+            const convertedFile = document.getElementById('converted-file').textContent;
+            alert(`Downloading: ${convertedFile}`);
+            // In real implementation, this would trigger actual file download
+        });
+    </script>
+</body>
+</html>
